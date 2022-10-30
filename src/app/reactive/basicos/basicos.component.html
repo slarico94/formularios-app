@@ -1,0 +1,90 @@
+<h2>Reactive: <small>Básicos</small></h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <form
+      [formGroup]="reactiveForm"
+      (ngSubmit)="submit()"
+      autocomplete="off"
+    >
+      <!-- Campo producto -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label" for="producto">Producto</label>
+        <div class="col-sm-9">
+          <input
+            id="producto"
+            type="text"
+            class="form-control"
+            name="producto"
+            placeholder="Nombre del producto"
+            formControlName="nombre"
+          >
+          <span
+            class="form-text text-danger"
+            *ngIf="campoEsInValido('nombre')"
+          >Debe de ser mayor de 3 letras</span>
+        </div>
+      </div>
+      <!-- Campo Precio -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label" for="precio">Precio</label>
+        <div class="col-sm-9">
+          <input
+            id="precio"
+            name="precio"
+            type="number"
+            class="form-control"
+            placeholder="Precio del producto"
+            formControlName="precio"
+          >
+          <span
+            class="form-text text-danger"
+            *ngIf="campoEsInValido('precio')"
+          >El precio debe ser 0 o mayor</span>
+        </div>
+      </div>
+      <!-- Campo Existencias -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label" for="existencias">Existencias</label>
+        <div class="col-sm-9">
+          <input
+            id="existencias"
+            name="existencias"
+            type="number"
+            class="form-control"
+            placeholder="Existencias del producto"
+            formControlName="existencias"
+          >
+          <span
+            class="form-text text-danger"
+            *ngIf="campoEsInValido('existencias')"
+          >El precio debe ser 0 o mayor</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button
+            type="submit"
+            class="btn btn-primary float-end"
+          >Guardar</button>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col">
+        <span>Valid</span>
+        <pre>{{ reactiveForm.valid }}</pre>
+
+        <span>Pristine</span>
+        <pre>{{ reactiveForm.pristine }}</pre>
+
+        <span>Touched</span>
+        <pre>{{ reactiveForm.touched }}</pre>
+
+        <span>Value</span>
+        <pre>{{ reactiveForm.value | json }}</pre>
+      </div>
+    </div>
+  </div>
+</div>
